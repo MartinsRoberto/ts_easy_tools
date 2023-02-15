@@ -18,7 +18,6 @@ const Card = ({ title, pathLink, description, example1, example2, example3, exam
   return (
     <div className='card-item'>
       <Link to={`${pathLink}`}>
-
         <div className='icon'><TbNumbers /></div>
         <h3>{title}</h3>
         <p>{description}</p>
