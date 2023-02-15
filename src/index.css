@@ -25,3 +25,11 @@ a{
   text-decoration: none;
   color: var(--color-blue-1);
 }
+
+li{
+  list-style-type: none;
+}
+
+h2{
+  text-align: center;
+}

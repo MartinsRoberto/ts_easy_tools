@@ -8,19 +8,9 @@
 #home h1{
   margin: 1em 0;
 }
+
 #home .cards{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
-}
-
-#home .card-item{
-  background-color: var(--color-black-2);
-  padding: 10px;
-  border-radius: 5px;
-  transition: .4s;
-}
-
-#home .card-item:hover{
-  transform: scale(1.1);
 }

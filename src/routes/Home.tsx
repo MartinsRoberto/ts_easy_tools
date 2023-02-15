@@ -15,10 +15,10 @@ const Home = (props: Props) => {
           title="Numbers" 
           pathLink="/numbers" 
           description="Converta para os números para outra unidade" 
-          example1="Decimal para binário" 
-          example2="Decimal para binário"
-          example3="Decimal para binário"
-          example4="Decimal para binário"
+          example1="Binário para Hexadecimal" 
+          example2="Hexadecimal para Octadecimal"
+          example3="Octadecimal para Decimal"
+          example4="Decimal para Romano"
         />
         <Card 
           title="Numbers" 
