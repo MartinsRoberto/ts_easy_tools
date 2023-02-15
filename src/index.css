@@ -1,0 +1,27 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+
+  --color-black-1: #242424;
+  --color-black-2: #171717;
+
+  --color-white-1: #f2f2f2;
+  --color-white-2: #cccccc;
+
+  --color-blue-1: #0d6efd;
+}
+
+body{
+  background-color: var(--color-black-1);
+  color: var(--color-white-2);
+}
+
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
+a{
+  text-decoration: none;
+  color: var(--color-blue-1);
+}
