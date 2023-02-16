@@ -1,9 +1,6 @@
 import { useState } from 'react'
-import { useAsyncValue } from 'react-router'
 
 type Props = {}
-
-
 
 const Numbers = (props: Props) => {
   const [binario, setBinario] = useState<string>('')

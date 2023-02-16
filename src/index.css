@@ -57,6 +57,7 @@ input{
   box-sizing: border-box;
   flex: 1;
   padding: 6px;
+  text-align: right;
 }
 
 input:focus{

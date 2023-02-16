@@ -19,8 +19,6 @@
   font-size: 2em;
   background-color: var(--color-blue-1);
   color: white;
-  border-radius: 100%;
-  padding: 10px;
 }
 
 .card-item h3{
