@@ -11,47 +11,48 @@
   --color-blue-1: #0d6efd;
 }
 
-body{
+body {
   background-color: var(--color-black-1);
   color: var(--color-white-2);
 }
 
-*{
+* {
   padding: 0px;
   margin: 0px;
 }
 
-a{
+a {
   text-decoration: none;
   color: var(--color-blue-1);
 }
 
-li{
+li {
   list-style-type: none;
 }
 
-h2{
+h2 {
   text-align: center;
   margin: 2em 0;
 }
 
-form{
+form {
   width: 700px;
   margin: auto;
 }
 
-label{
+label {
   display: flex;
   justify-content: space-between;
   font-size: 1.5em;
+  margin-bottom: 0.5em;
 }
 
-label span{
+label span {
   min-width: 200px;
   font-size: 1.2em;
 }
 
-input{
+input {
   border: 1px solid var(--color-white-1);
   background-color: transparent;
   color: var(--color-white-2);
@@ -62,6 +63,6 @@ input{
   font-size: 1.2em;
 }
 
-input:focus{
+input:focus {
   outline: var(--color-blue-1);
 }

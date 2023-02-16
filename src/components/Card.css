@@ -15,22 +15,32 @@
   justify-content: center;
 }
 
+.card-item .icon .icon-box {
+  background-color: var(--color-blue-1);
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .card-item svg {
   font-size: 2em;
-  background-color: var(--color-blue-1);
   color: white;
 }
 
-.card-item h3{
+.card-item h3 {
   margin: 1em 0;
 }
-.card-item p{
+
+.card-item p {
   color: var(--color-white-2);
   font-size: 0.9em;
   margin-bottom: 1em;
 }
 
-.card-item li{
+.card-item li {
   color: var(--color-white-2);
   font-size: 0.8em;
   margin-bottom: 0.5em;

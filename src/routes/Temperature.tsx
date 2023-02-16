@@ -10,30 +10,41 @@ const Temperature = (props: Props) => {
   const [rankine, setRankine] = useState<string>('')
   const [sign, setSign] = useState<boolean>(false)
 
-  const convertBase = (value: string, key: string): void => {
-    console.log(value)
+  const convertTemperature = (value: string, key: string): void => {
     let convert: number = 0
 
     if (value.length === 0) {
       clear()
+      return
     }
-    else if (!isNaN(+value)) {
-      if (key === 'c') {
+
+    if (isNaN(+value)) {
+      return
+    }
+
+    switch (key) {
+      case 'c':
         convert = +value
-      } else if (key === 'f') {
+        break
+      case 'f':
         convert = (+value - 32) / 1.8
-      } else if (key === 'k') {
+        break
+      case 'k':
         convert = +value - 273
-      } else if (key === 're') {
+        break
+      case 're':
         convert = +value * 1.25
-      } else if (key === 'ra') {
+        break
+      case 'ra':
         convert = (+value - 491.67) / 1.8
-      }
-      convertAll(convert)
+        break
+      default:
+        return
     }
+    updateTemperature(convert)
   }
 
-  const convertAll = (value: number): void => {
+  const updateTemperature = (value: number): void => {
     const c: number = Math.round(value)
     const f: number = Math.round(value * 1.8 + 32)
     const k: number = Math.round(value + 273)
@@ -56,49 +67,26 @@ const Temperature = (props: Props) => {
   }
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>, key: string) => {
-    if (event.key !== '-') return
+    if (event.key !== '-') {
+      return
+    }
+
+    const keysMap: { [key: string]: string } = {
+      c: celsius,
+      f: fahrenheit,
+      k: kelvin,
+      re: reaumur,
+      ra: rankine
+    }
+
+    const currentValue = keysMap[key]
 
     if (sign) {
       setSign(false)
-
-      switch (key) {
-        case 'c':
-          convertBase(celsius.replace('-', ''), 'c')
-          return
-        case 'f':
-          convertBase(fahrenheit.replace('-', ''), 'f')
-          return
-        case 'k':
-          convertBase(kelvin.replace('-', ''), 'k')
-          return
-        case 're':
-          convertBase(reaumur.replace('-', ''), 're')
-          return
-        case 'ra':
-          convertBase(rankine.replace('-', ''), 'ra')
-          return
-      }
-    }
-    else {
+      convertTemperature(currentValue.replace('-', ''), key)
+    } else {
       setSign(true)
-
-      switch (key) {
-        case 'c':
-          convertBase(("-" + celsius), 'c')
-          return
-        case 'f':
-          convertBase(("-" + fahrenheit), 'f')
-          return
-        case 'k':
-          convertBase(("-" + kelvin), 'k')
-          return
-        case 're':
-          convertBase(("-" + reaumur), 're')
-          return
-        case 'ra':
-          convertBase(("-" + rankine), 'ra')
-          return
-      }
+      convertTemperature(`-${currentValue}`, key)
     }
   }
 
@@ -108,23 +96,23 @@ const Temperature = (props: Props) => {
       <form action="">
         <label>
           <span>Celsius</span>
-          <input type="text" value={celsius} onChange={(e) => convertBase(e.target.value, 'c')} onKeyUp={(e) => handleKeyPress(e, 'c')} />
+          <input type="text" value={celsius} onChange={(e) => convertTemperature(e.target.value, 'c')} onKeyUp={(e) => handleKeyPress(e, 'c')} />
         </label>
         <label>
           <span>Fahrenheit</span>
-          <input type="text" value={fahrenheit} onChange={(e) => convertBase(e.target.value, 'f')} onKeyUp={(e) => handleKeyPress(e, 'f')} />
+          <input type="text" value={fahrenheit} onChange={(e) => convertTemperature(e.target.value, 'f')} onKeyUp={(e) => handleKeyPress(e, 'f')} />
         </label>
         <label>
           <span>Kelvin</span>
-          <input type="text" value={kelvin} onChange={(e) => convertBase(e.target.value, 'k')} onKeyUp={(e) => handleKeyPress(e, 'k')} />
+          <input type="text" value={kelvin} onChange={(e) => convertTemperature(e.target.value, 'k')} onKeyUp={(e) => handleKeyPress(e, 'k')} />
         </label>
         <label>
           <span>Reaumur</span>
-          <input type="text" value={reaumur} onChange={(e) => convertBase(e.target.value, 're')} onKeyUp={(e) => handleKeyPress(e, 're')} />
+          <input type="text" value={reaumur} onChange={(e) => convertTemperature(e.target.value, 're')} onKeyUp={(e) => handleKeyPress(e, 're')} />
         </label>
         <label>
           <span>Rankine</span>
-          <input type="text" value={rankine} onChange={(e) => convertBase(e.target.value, 'ra')} onKeyUp={(e) => handleKeyPress(e, 'ra')} />
+          <input type="text" value={rankine} onChange={(e) => convertTemperature(e.target.value, 'ra')} onKeyUp={(e) => handleKeyPress(e, 'ra')} />
         </label>
       </form>
     </div>

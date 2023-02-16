@@ -8,6 +8,7 @@ import App from './App'
 import './index.css'
 import Home from './routes/Home';
 import Temperature from './routes/Temperature';
+import Time from './routes/Time';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
         path: "/temperature",
         element: <Temperature />
       }
-
+      ,
+      {
+        path: "/time",
+        element: <Time />
+      }
     ]
   },
 ]);

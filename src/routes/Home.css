@@ -5,11 +5,11 @@
   text-align: center;
 }
 
-#home h1{
+#home h1 {
   margin: 1em 0;
 }
 
-#home .cards{
+#home .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;

@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom'
 import './Card.css'
 
 type Props = {
-  title: String,
-  pathLink: String,
-  description: String,
+  title: string,
+  pathLink: string,
+  description: string,
   examples: Array<string>,
-  icon: any,
+  icon: React.ReactNode,
 }
 
-const Card = ({ title, pathLink, description, examples, icon}: Props) => {
+const Card = ({ title, pathLink, description, examples, icon }: Props) => {
   return (
     <div className='card-item'>
-      <Link to={`${pathLink}`}>
-        <div className='icon'>{icon}</div>
+      <Link to={`${pathLink}`} aria-label={title}>
+        <div className='icon'><div className="icon-box">{icon}</div></div>
         <h3>{title}</h3>
         <p>{description}</p>
         <ul>

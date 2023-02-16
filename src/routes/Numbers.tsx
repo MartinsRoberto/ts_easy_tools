@@ -38,7 +38,7 @@ const Numbers = (props: Props) => {
 
   return (
     <div id='numbers'>
-      <h2>Numbers</h2>
+      <h2>Conversor de números</h2>
       <form action="">
         <label>
           <span>Binário</span>

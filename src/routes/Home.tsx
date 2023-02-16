@@ -1,5 +1,6 @@
 import { TbNumbers } from 'react-icons/tb'
 import { FaTemperatureLow } from 'react-icons/Fa'
+import { BiTimeFive } from 'react-icons/Bi'
 
 import Card from '../components/Card'
 
@@ -10,7 +11,7 @@ type Props = {}
 const Home = (props: Props) => {
   return (
     <div id="home">
-      <h1>Conversos e Ferramentas para Devs</h1>
+      <h1>Conversor Online</h1>
       <div className="cards">
         <Card
           title="Numbers"
@@ -25,6 +26,13 @@ const Home = (props: Props) => {
           description="Converta as temperaturas para outra unidade"
           examples={["Celsius", "Fahrenheit", "Kelvin", "Reaumur", "Rankine"]}
           icon={<FaTemperatureLow />}
+        />
+        <Card
+          title="Tempo"
+          pathLink="/time"
+          description="Converta as unidades de tempo para outra unidade"
+          examples={["Segundos", "Minutos", "Horas", "Dias"]}
+          icon={<BiTimeFive />}
         />
       </div>
     </div>
