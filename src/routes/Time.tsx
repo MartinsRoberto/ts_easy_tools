@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 type Props = {}
 
 const Time = (props: Props) => {
-  const [seconds, setSeconds] = useState('')
-  const [minutes, setMinutes] = useState('')
-  const [hours, setHours] = useState('')
-  const [days, setDays] = useState('')
+  const [seconds, setSeconds] = useState<string>('')
+  const [minutes, setMinutes] = useState<string>('')
+  const [hours, setHours] = useState<string>('')
+  const [days, setDays] = useState<string>('')
 
   const unitToSeconds: { [key: string]: number } = {
     s: 1,
@@ -21,6 +21,7 @@ const Time = (props: Props) => {
     if (isNaN(parsedValue)) return
   
     const totalSeconds = parsedValue * unitToSeconds[key]
+    
     setSeconds(totalSeconds.toString())
     setMinutes((totalSeconds / unitToSeconds['m']).toFixed(3).toString())
     setHours((totalSeconds / unitToSeconds['h']).toFixed(3).toString())

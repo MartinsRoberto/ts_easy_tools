@@ -1,6 +1,7 @@
 import { TbNumbers } from 'react-icons/tb'
 import { FaTemperatureLow } from 'react-icons/Fa'
 import { BiTimeFive } from 'react-icons/Bi'
+import { CiRuler } from 'react-icons/Ci'
 
 import Card from '../components/Card'
 
@@ -14,7 +15,7 @@ const Home = (props: Props) => {
       <h1>Conversor Online</h1>
       <div className="cards">
         <Card
-          title="Numbers"
+          title="Numeros"
           pathLink="/numbers"
           description="Converta os números para outra unidade"
           examples={["Binário", "Hexadecimal", "Octadecimal", "Decimal", "Romanos"]}
@@ -33,6 +34,13 @@ const Home = (props: Props) => {
           description="Converta as unidades de tempo para outra unidade"
           examples={["Segundos", "Minutos", "Horas", "Dias"]}
           icon={<BiTimeFive />}
+        />
+        <Card
+          title="Comprimento"
+          pathLink="/length"
+          description="Converta as unidades de tempo para outra unidade"
+          examples={["Centímetro", "Metros", "Quilômetro", "Milha"]}
+          icon={<CiRuler />}
         />
       </div>
     </div>
