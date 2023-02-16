@@ -11,7 +11,7 @@ const Temperature = (props: Props) => {
   const [sign, setSign] = useState<boolean>(false)
 
   const convertBase = (value: string, key: string): void => {
-
+    console.log(value)
     let convert: number = 0
 
     if (value.length === 0) {
@@ -34,7 +34,6 @@ const Temperature = (props: Props) => {
   }
 
   const convertAll = (value: number): void => {
-    console.log(value)
     const c: number = Math.round(value)
     const f: number = Math.round(value * 1.8 + 32)
     const k: number = Math.round(value + 273)
@@ -56,37 +55,49 @@ const Temperature = (props: Props) => {
     setRankine('')
   }
 
-  function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>, key: string) {
-    console.log('key', key)
-    if (event.key === '-') {
-      console.log('menos clicado')
-      if (sign) {
-        setSign(false)
-        if (key == 'c' && sign) {
-          const a = celsius.replace('-', '')
-          setCelsius(a)
-        }
-      }
-      else {
-        setSign(true)
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>, key: string) => {
+    if (event.key !== '-') return
 
-        switch (key) {
-          case 'c':
-            convertAll((+("-" + celsius)))
-            return
-          case 'f':
-            convertAll((+("-" + fahrenheit)))
-            return
-          case 'k':
-            convertAll((+("-" + kelvin)))
-            return
-          case 're':
-            convertAll((+("-" + reaumur)))
-            return
-          case 'ra':
-            convertAll((+("-" + rankine)))
-            return
-        }
+    if (sign) {
+      setSign(false)
+
+      switch (key) {
+        case 'c':
+          convertBase(celsius.replace('-', ''), 'c')
+          return
+        case 'f':
+          convertBase(fahrenheit.replace('-', ''), 'f')
+          return
+        case 'k':
+          convertBase(kelvin.replace('-', ''), 'k')
+          return
+        case 're':
+          convertBase(reaumur.replace('-', ''), 're')
+          return
+        case 'ra':
+          convertBase(rankine.replace('-', ''), 'ra')
+          return
+      }
+    }
+    else {
+      setSign(true)
+
+      switch (key) {
+        case 'c':
+          convertBase(("-" + celsius), 'c')
+          return
+        case 'f':
+          convertBase(("-" + fahrenheit), 'f')
+          return
+        case 'k':
+          convertBase(("-" + kelvin), 'k')
+          return
+        case 're':
+          convertBase(("-" + reaumur), 're')
+          return
+        case 'ra':
+          convertBase(("-" + rankine), 'ra')
+          return
       }
     }
   }
