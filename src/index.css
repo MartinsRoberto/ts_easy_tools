@@ -34,8 +34,12 @@ h2{
   text-align: center;
 }
 
+label{
+  display: block;
+}
 input{
   border: 1px solid var(--color-white-1);
   background-color: transparent;
   color: var(--color-white-2);
+  box-sizing: border-box;
 }
