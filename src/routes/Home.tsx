@@ -1,5 +1,3 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
 import Card from '../components/Card'
 
 import './Home.css'
@@ -15,10 +13,10 @@ const Home = (props: Props) => {
           title="Numbers" 
           pathLink="/numbers" 
           description="Converta para os números para outra unidade" 
-          example1="Binário para Hexadecimal" 
-          example2="Hexadecimal para Octadecimal"
-          example3="Octadecimal para Decimal"
-          example4="Decimal para Romano"
+          example1="Binário" 
+          example2="Hexadecimal"
+          example3="Octadecimal"
+          example4="Decimal"
         />
         <Card 
           title="Numbers" 

@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useAsyncValue } from 'react-router'
 
 type Props = {}
+
+
 
 const Numbers = (props: Props) => {
   const [binario, setBinario] = useState<string>('')
@@ -8,13 +11,32 @@ const Numbers = (props: Props) => {
   const [octa, setOcta] = useState<string>('')
   const [decimal, setDecimal] = useState<string>('')
 
-  const converBinario = (value: string):void  => {
-    const convert: number = parseInt(value,2) 
-    
-    setBinario(value)
-    setHexa(convert.toString(16))
-    setOcta(convert.toString(8))
-    setDecimal(convert.toString(10))
+  const convertBinario = (value: string): void => {
+    const convert: number = parseInt(value.replace(/[^01]/g, ""), 2)
+    convertAll(convert)
+  }
+
+  const convertHexa = (value: string): void => {
+    const convert: number = parseInt(value.replace(/[^0-9A-Fa-f]/g, ""), 16)
+    convertAll(convert)
+  }
+
+  const convertOcta = (value: string): void => {
+    const convert: number = parseInt(value.replace(/[^0-7]/g, ""), 8)
+    convertAll(convert)
+  }
+
+  const convertDecimal = (value: string): void => {
+    const convert: number = parseInt(value.replace(/[^0-9]/g, ""))
+    convertAll(convert)
+  }
+
+  const convertAll = (value: number): void => {
+    if (isNaN(value)) return
+    setBinario(value.toString(2))
+    setHexa(value.toString(16))
+    setOcta(value.toString(8))
+    setDecimal(value.toString(10))
   }
 
   return (
@@ -23,19 +45,19 @@ const Numbers = (props: Props) => {
       <form action="">
         <label>
           <span>Binário</span>
-          <input type="text" value={binario} onChange={(e) => converBinario(e.target.value)} />
+          <input type="text" value={binario} onChange={(e) => convertBinario(e.target.value)} />
         </label>
         <label>
           <span>Hexadecimal</span>
-          <input type="text" value={hexa} onChange={(e) => setHexa(e.target.value)} />
+          <input type="text" value={hexa} onChange={(e) => convertHexa(e.target.value)} />
         </label>
         <label>
           <span>Octadecimal</span>
-          <input type="text" value={octa} onChange={(e) => setOcta(e.target.value)} />
+          <input type="text" value={octa} onChange={(e) => convertOcta(e.target.value)} />
         </label>
         <label>
           <span>Decimal</span>
-          <input type="text" value={decimal} onChange={(e) => setDecimal(e.target.value)} />
+          <input type="text" value={decimal} onChange={(e) => convertDecimal(e.target.value)} />
         </label>
       </form>
     </div>
@@ -43,63 +65,3 @@ const Numbers = (props: Props) => {
 }
 
 export default Numbers
-// import React, { useEffect, useState } from 'react'
-
-// type Props = {}
-
-// type FormFields = {
-//   binario: string;
-//   hexa: string;
-//   octa: string;
-//   decimal: string;
-// }
-
-// const formTemplate: FormFields = {
-//   binario: "",
-//   hexa: "",
-//   octa: "",
-//   decimal: "",
-// }
-
-// const Numbers = (props: Props) => {
-//   const [data, setData] = useState(formTemplate)
-
-//   const updateFieldHandler = (key: string, value: string): void => {
-//     if (key == 'binario') {
-//       setData((prev) => {
-//         return { ...prev, [key]: value }
-//       })
-//     }
-//     // setData((prev) => {
-//     //   return { ...prev, [key]: value }
-//     // })
-//   }
-
-
-
-//   return (
-//     <div id='numbers'>
-//       <h2>Numbers</h2>
-//       <form action="">
-//         <label>
-//           <span>Binário</span>
-//           <input type="text" value={data.binario} onChange={(e) => updateFieldHandler("binario", e.target.value)} />
-//         </label>
-//         <label>
-//           <span>Hexadecimal</span>
-//           <input type="text" value={data.hexa} onChange={(e) => updateFieldHandler("hexa", e.target.value)} />
-//         </label>
-//         <label>
-//           <span>Octadecimal</span>
-//           <input type="text" value={data.octa} onChange={(e) => updateFieldHandler("octa", e.target.value)} />
-//         </label>
-//         <label>
-//           <span>Decimal</span>
-//           <input type="text" value={data.decimal} onChange={(e) => updateFieldHandler("decimal", e.target.value)} />
-//         </label>
-//       </form>
-//     </div>
-//   )
-// }
-
-// export default Numbers
