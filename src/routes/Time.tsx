@@ -15,7 +15,7 @@ const Time = (props: Props) => {
     d: 86400,
   }
 
-  const convertBase = (value: string, key: string) => {
+  const convertTime = (value: string, key: string) => {
     const parsedValue = parseInt(value)
 
     if (isNaN(parsedValue)) return
@@ -34,19 +34,19 @@ const Time = (props: Props) => {
       <form>
         <label>
           <span>Segundos</span>
-          <input type="text" value={seconds} onChange={(e) => convertBase(e.target.value, 's')} />
+          <input type="text" value={seconds} onChange={(e) => convertTime(e.target.value, 's')} />
         </label>
         <label>
           <span>Minutos</span>
-          <input type="text" value={minutes} onChange={(e) => convertBase(e.target.value, 'm')} />
+          <input type="text" value={minutes} onChange={(e) => convertTime(e.target.value, 'm')} />
         </label>
         <label>
           <span>Horas</span>
-          <input type="text" value={hours} onChange={(e) => convertBase(e.target.value, 'h')} />
+          <input type="text" value={hours} onChange={(e) => convertTime(e.target.value, 'h')} />
         </label>
         <label>
           <span>Dias</span>
-          <input type="text" value={days} onChange={(e) => convertBase(e.target.value, 'd')} />
+          <input type="text" value={days} onChange={(e) => convertTime(e.target.value, 'd')} />
         </label>
       </form>
     </div>
