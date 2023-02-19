@@ -8,7 +8,7 @@ type Props = {
   pathLink: string,
   description: string,
   examples: Array<string>,
-  icon: React.ReactNode,
+  icon: string | React.ReactNode,
 }
 
 const Card = ({ title, pathLink, description, examples, icon }: Props) => {
@@ -18,11 +18,7 @@ const Card = ({ title, pathLink, description, examples, icon }: Props) => {
         <div className='icon'><div className="icon-box">{icon}</div></div>
         <h3>{title}</h3>
         <p>{description}</p>
-        <ul>
-          {examples.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <ul>{examples.map((item, index) => <li key={index}>{item}</li>)}</ul>
       </Link>
     </div>
   )

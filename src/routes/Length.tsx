@@ -13,7 +13,7 @@ const Length = (props: Props) => {
   const [pe, setPe] = useState<string>('')
   const [polegada, setPolegada] = useState<string>('')
 
-  const unitToSeconds: { [key: string]: number } = {
+  const units: { [key: string]: number } = {
     q: 100000,
     m: 100,
     c: 1,
@@ -28,21 +28,37 @@ const Length = (props: Props) => {
   const convertLength = (value: string, key: string) => {
     const parserValue = parseInt(value)
 
+    if (value.length === 0) {
+      clear()
+      return
+    }
+
     if (isNaN(parserValue)) return
 
-    const totalCentimetros = parserValue * unitToSeconds[key]
+    const totalCentimetros = parserValue * units[key]
 
-    setQuilometro((totalCentimetros / unitToSeconds['q']).toFixed(5).toString())
-    setMetro((totalCentimetros / unitToSeconds['m']).toFixed(5).toString())
-    setCentimetro((totalCentimetros / unitToSeconds['c']).toFixed(5).toString())
-    setMilimetro((totalCentimetros / unitToSeconds['mm']).toFixed(5).toString())
-    setMicrometro((totalCentimetros / unitToSeconds['mc']).toFixed(5).toString())
-    setMilha((totalCentimetros / unitToSeconds['mi']).toFixed(5).toString())
-    setJarda((totalCentimetros / unitToSeconds['j']).toFixed(5).toString())
-    setPe((totalCentimetros / unitToSeconds['pe']).toFixed(5).toString())
-    setPolegada((totalCentimetros / unitToSeconds['po']).toFixed(5).toString())
+    setQuilometro((totalCentimetros / units['q']).toFixed(0).toString())
+    setMetro((totalCentimetros / units['m']).toFixed(0).toString())
+    setCentimetro((totalCentimetros / units['c']).toFixed(0).toString())
+    setMilimetro((totalCentimetros / units['mm']).toFixed(0).toString())
+    setMicrometro((totalCentimetros / units['mc']).toFixed(0).toString())
+    setMilha((totalCentimetros / units['mi']).toFixed(0).toString())
+    setJarda((totalCentimetros / units['j']).toFixed(0).toString())
+    setPe((totalCentimetros / units['pe']).toFixed(0).toString())
+    setPolegada((totalCentimetros / units['po']).toFixed(0).toString())
   }
 
+  const clear = (): void => {
+    setQuilometro('')
+    setMetro('')
+    setCentimetro('')
+    setMilimetro('')
+    setMicrometro('')
+    setMilha('')
+    setJarda('')
+    setPe('')
+    setPolegada('')
+  }
   return (
     <div id='length'>
       <h2>Conversor de comprimento</h2>

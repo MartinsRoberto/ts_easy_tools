@@ -10,6 +10,7 @@ import Home from './routes/Home';
 import Temperature from './routes/Temperature';
 import Time from './routes/Time';
 import Length from './routes/Length';
+import Velocity from './routes/Velocity';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/length",
         element: <Length />
+      },
+      {
+        path: "/velocity",
+        element: <Velocity />
       }
     ]
   },

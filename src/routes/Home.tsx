@@ -2,6 +2,7 @@ import { TbNumbers } from 'react-icons/tb'
 import { FaTemperatureLow } from 'react-icons/Fa'
 import { BiTimeFive } from 'react-icons/Bi'
 import { CiRuler } from 'react-icons/Ci'
+import { SlSpeedometer } from 'react-icons/Sl'
 
 import Card from '../components/Card'
 
@@ -18,14 +19,14 @@ const Home = (props: Props) => {
           title="Numeros"
           pathLink="/numbers"
           description="Converta os números para outra unidade"
-          examples={["Binário", "Hexadecimal", "Octadecimal", "Decimal", "Romanos"]}
+          examples={["Binário", "Hexadecimal", "Octadecimal", "Decimal"]}
           icon={<TbNumbers />}
         />
         <Card
           title="Temperatura"
           pathLink="/temperature"
           description="Converta as temperaturas para outra unidade"
-          examples={["Celsius", "Fahrenheit", "Kelvin", "Reaumur", "Rankine"]}
+          examples={["Celsius", "Fahrenheit", "Kelvin", "Reaumur"]}
           icon={<FaTemperatureLow />}
         />
         <Card
@@ -38,9 +39,16 @@ const Home = (props: Props) => {
         <Card
           title="Comprimento"
           pathLink="/length"
-          description="Converta as unidades de tempo para outra unidade"
+          description="Converta as medidas para outra unidades"
           examples={["Centímetro", "Metros", "Quilômetro", "Milha"]}
           icon={<CiRuler />}
+        />
+        <Card
+          title="Velocidade"
+          pathLink="/velocity"
+          description="Converta as medidas para outra unidades"
+          examples={["Metro/segundo", "km/hora", "Milhas/hora", "Pés/seg", "Nó"]}
+          icon={<SlSpeedometer />}
         />
       </div>
     </div>
