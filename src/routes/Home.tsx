@@ -3,6 +3,7 @@ import { FaTemperatureLow } from 'react-icons/Fa'
 import { BiTimeFive } from 'react-icons/Bi'
 import { CiRuler } from 'react-icons/Ci'
 import { SlSpeedometer } from 'react-icons/Sl'
+import { AiOutlineThunderbolt } from 'react-icons/ai'
 
 import Card from '../components/Card'
 
@@ -49,6 +50,13 @@ const Home = (props: Props) => {
           description="Converta as medidas para outra unidades"
           examples={["Metro/segundo", "km/hora", "Milhas/hora", "Pés/seg", "Nó"]}
           icon={<SlSpeedometer />}
+        />
+        <Card
+          title="Energia"
+          pathLink="/energy"
+          description="Converta as medidas para outra unidades"
+          examples={["Joule", "Quilocaloria", "Watt-hora", "Gram-calorie", "Pé-libra"]}
+          icon={<AiOutlineThunderbolt />}
         />
       </div>
     </div>
