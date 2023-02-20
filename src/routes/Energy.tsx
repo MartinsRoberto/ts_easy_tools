@@ -3,11 +3,12 @@ import React, { useState } from "react"
 type Props = {}
 
 const Energy = (props: Props) => {
-  const [joule, setJoule] = useState<number>(0)
-  const [quiloCaloria, setQuiloCaloria] = useState<number>(0)
-  const [wattHora, setWattHora] = useState<number>(0)
-  const [gram, setGram] = useState<number>(0)
-  const [peLibra, setPeLibra] = useState<number>(0)
+  const [joule, setJoule] = useState<string>("")
+  const [quiloCaloria, setQuiloCaloria] = useState<string>("")
+  const [wattHora, setWattHora] = useState<string>("")
+  const [gram, setGram] = useState<string>("")
+  const [peLibra, setPeLibra] = useState<string>("")
+  const [comma, setComma] = useState<boolean>(false)
 
   const units: { [key: string]: number } = {
     j: 1,
@@ -18,57 +19,61 @@ const Energy = (props: Props) => {
   }
 
   const convertEnergy = (value: string, key: string): void => {
-    const parserValue = parseInt(value)
+    const inputRegex = /^[0-9,.]*$/;
 
-    console.log('aaaaa')
-    if (value.length === 0) {
-      clear()
+    if (!inputRegex.test(value)) return
+
+    if (value.substring(value.length - 1) == ",") {
+      setJoule(value)
       return
     }
 
-    console.log('bbbbbb')
-    if(parserValue < 0) return
+    if (value.length == 0) {
+      resetValues()
+      return
+    }
 
-    const energyDefault = parserValue * units[key]
+    const energyDefault = parseFloat(value.replace(',', '.')) * units[key]
 
-    setJoule(+(energyDefault / units.j).toFixed(2))
-    setQuiloCaloria(+(energyDefault / units.qc).toFixed(2))
-    setWattHora(+(energyDefault / units.wh).toFixed(2))
-    setGram(+(energyDefault / units.g).toFixed(2))
-    setPeLibra(+(energyDefault / units.pl).toFixed(2))
+    setJoule((energyDefault / units.j).toString().replace('.', ','))
+    setQuiloCaloria((energyDefault / units.qc).toString().replace('.', ','))
+    setWattHora((energyDefault / units.wh).toString().replace('.', ','))
+    setGram((energyDefault / units.g).toString().replace('.', ','))
+    setPeLibra((energyDefault / units.pl).toString().replace('.', ','))
 
   }
 
-  const clear = (): void => {
-    setJoule(0)
-    setQuiloCaloria(0)
-    setWattHora(0)
-    setGram(0)
-    setPeLibra(0)
+  const resetValues = (): void => {
+    setJoule("")
+    setQuiloCaloria("")
+    setWattHora("")
+    setGram("")
+    setPeLibra("")
   }
+
   return (
     <div id="energy">
       <h2>Conversor de energia</h2>
       <form>
         <label>
           <span>Joule</span>
-          <input type="number" value={joule} onChange={(e) => convertEnergy(e.target.value, "j")} />
+          <input type="text" value={joule} onChange={(e) => convertEnergy(e.target.value, "j")} />
         </label>
         <label>
           <span>Quilo Caloria</span>
-          <input type="number" value={quiloCaloria} onChange={(e) => convertEnergy(e.target.value, "qc")} />
+          <input type="text" value={quiloCaloria} onChange={(e) => convertEnergy(e.target.value, "qc")} />
         </label>
         <label>
           <span>Watt Hora</span>
-          <input type="number" value={wattHora} onChange={(e) => convertEnergy(e.target.value, "wh")} />
+          <input type="text" value={wattHora} onChange={(e) => convertEnergy(e.target.value, "wh")} />
         </label>
         <label>
           <span>Gram Calorie</span>
-          <input type="number" value={gram} onChange={(e) => convertEnergy(e.target.value, "g")} />
+          <input type="text" value={gram} onChange={(e) => convertEnergy(e.target.value, "g")} />
         </label>
         <label>
           <span>Pé-libra Força</span>
-          <input type="number" value={peLibra} onChange={(e) => convertEnergy(e.target.value, "pl")} />
+          <input type="text" value={peLibra} onChange={(e) => convertEnergy(e.target.value, "pl")} />
         </label>
       </form>
     </div>
