@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 
 type Props = {}
 
-const units: Record<string, number> = {
+const units: { [key: string]: number } = {
   ms: 1,
-  kmh: 3.6,
-  feet: 3.281,
-  miles: 2.237,
-  knots: 1.944,
+  kmh: 1 / 3.6,
+  feet: 1 / 3.281,
+  miles: 1 / 2.237,
+  knots: 1 / 1.944,
 }
 
 const Velocity = (props: Props) => {
@@ -51,11 +51,11 @@ const Velocity = (props: Props) => {
 
     const defaultVelocity = parseFloat(value.replace(',', '.')) * units[key]
 
-    setMs((defaultVelocity * units.ms).toString().replace('.', ','))
-    setKmh((defaultVelocity * units.kmh).toString().replace('.', ','))
-    setFeet((defaultVelocity * units.feet).toString().replace('.', ','))
-    setMiles((defaultVelocity * units.miles).toString().replace('.', ','))
-    setKnots((defaultVelocity * units.knots).toString().replace('.', ','))
+    setMs((defaultVelocity / units['ms']).toString().replace('.', ','))
+    setKmh((defaultVelocity / units['kmh']).toString().replace('.', ','))
+    setFeet((defaultVelocity / units['feet']).toString().replace('.', ','))
+    setMiles((defaultVelocity / units['miles']).toString().replace('.', ','))
+    setKnots((defaultVelocity / units['knots']).toString().replace('.', ','))
   }
 
   const resetValues = (): void => {

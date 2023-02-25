@@ -2,20 +2,20 @@ import React, { useState } from "react"
 
 type Props = {}
 
+const units: { [key: string]: number } = {
+  j: 1,
+  qc: 4184,
+  wh: 3600,
+  g: 4184,
+  pl: 1.356
+}
+
 const Energy = (props: Props) => {
   const [joule, setJoule] = useState<string>("")
   const [quiloCaloria, setQuiloCaloria] = useState<string>("")
   const [wattHora, setWattHora] = useState<string>("")
   const [gram, setGram] = useState<string>("")
   const [peLibra, setPeLibra] = useState<string>("")
-
-  const units: { [key: string]: number } = {
-    j: 1,
-    qc: 4184,
-    wh: 3600,
-    g: 4184,
-    pl: 1.356
-  }
 
   const convertEnergy = (value: string, key: string): void => {
     const inputRegex = /^[0-9,.]*$/;

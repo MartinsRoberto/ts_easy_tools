@@ -2,6 +2,18 @@ import React, { useState } from 'react'
 
 type Props = {}
 
+const units: { [key: string]: number } = {
+  q: 100000,
+  m: 100,
+  c: 1,
+  mm: 1 / 10,
+  mc: 1 / 10000,
+  mi: 160900,
+  j: 91.44,
+  pe: 30.48,
+  po: 2.54
+}
+
 const Length = (props: Props) => {
   const [quilometro, setQuilometro] = useState<string>('')
   const [metro, setMetro] = useState<string>('')
@@ -12,18 +24,6 @@ const Length = (props: Props) => {
   const [jarda, setJarda] = useState<string>('')
   const [pe, setPe] = useState<string>('')
   const [polegada, setPolegada] = useState<string>('')
-
-  const units: { [key: string]: number } = {
-    q: 100000,
-    m: 100,
-    c: 1,
-    mm: 1 / 10,
-    mc: 1 / 10000,
-    mi: 160900,
-    j: 91.44,
-    pe: 30.48,
-    po: 2.54
-  }
 
   const convertLength = (value: string, key: string) => {
     const inputRegex = /^[0-9,.]*$/;
@@ -59,17 +59,17 @@ const Length = (props: Props) => {
       return
     }
 
-    const energyLength = parseFloat(value.replace(',', '.')) * units[key]
+    const defaultLength = parseFloat(value.replace(',', '.')) * units[key]
 
-    setQuilometro((energyLength / units['q']).toString().replace('.', ','))
-    setMetro((energyLength / units['m']).toString().replace('.', ','))
-    setCentimetro((energyLength / units['c']).toString().replace('.', ','))
-    setMilimetro((energyLength / units['mm']).toString().replace('.', ','))
-    setMicrometro((energyLength / units['mc']).toString().replace('.', ','))
-    setMilha((energyLength / units['mi']).toString().replace('.', ','))
-    setJarda((energyLength / units['j']).toString().replace('.', ','))
-    setPe((energyLength / units['pe']).toString().replace('.', ','))
-    setPolegada((energyLength / units['po']).toString().replace('.', ','))
+    setQuilometro((defaultLength / units['q']).toString().replace('.', ','))
+    setMetro((defaultLength / units['m']).toString().replace('.', ','))
+    setCentimetro((defaultLength / units['c']).toString().replace('.', ','))
+    setMilimetro((defaultLength / units['mm']).toString().replace('.', ','))
+    setMicrometro((defaultLength / units['mc']).toString().replace('.', ','))
+    setMilha((defaultLength / units['mi']).toString().replace('.', ','))
+    setJarda((defaultLength / units['j']).toString().replace('.', ','))
+    setPe((defaultLength / units['pe']).toString().replace('.', ','))
+    setPolegada((defaultLength / units['po']).toString().replace('.', ','))
   }
 
   const resetValues = (): void => {
@@ -83,6 +83,7 @@ const Length = (props: Props) => {
     setPe('')
     setPolegada('')
   }
+
   return (
     <div id='length'>
       <h2>Conversor de comprimento</h2>

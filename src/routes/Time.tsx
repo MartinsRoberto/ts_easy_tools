@@ -2,30 +2,60 @@ import React, { useState } from 'react'
 
 type Props = {}
 
+const units: { [key: string]: number } = {
+  s: 1,
+  m: 60,
+  h: 3600,
+  d: 86400,
+}
+
 const Time = (props: Props) => {
   const [seconds, setSeconds] = useState<string>('')
   const [minutes, setMinutes] = useState<string>('')
   const [hours, setHours] = useState<string>('')
   const [days, setDays] = useState<string>('')
   
-  const unitToSeconds: { [key: string]: number } = {
-    s: 1,
-    m: 60,
-    h: 3600,
-    d: 86400,
+  const convertTime = (value: string, key: string) => {
+    const inputRegex = /^[0-9.,]*$/
+
+    if (!inputRegex.test(value)) return
+
+    if (value.endsWith(',')) {
+      switch (key) {
+        case 's':
+          setSeconds(value)
+          break
+        case 'm':
+          setMinutes(value)
+          break
+        case 'h':
+          setHours(value)
+          break
+        case 'd':
+          setDays(value)
+          break
+      }
+      return
+    }
+
+    if (value.length === 0) {
+      resetValues()
+      return
+    }
+
+    const defaultTime = parseFloat(value.replace(',', '.')) * units[key]
+    
+    setSeconds((defaultTime / units['s']).toString())
+    setMinutes((defaultTime / units['m']).toString())
+    setHours((defaultTime / units['h']).toString())
+    setDays((defaultTime / units['d']).toString())
   }
 
-  const convertTime = (value: string, key: string) => {
-    const parsedValue = parseInt(value)
-
-    if (isNaN(parsedValue)) return
-  
-    const totalSeconds = parsedValue * unitToSeconds[key]
-    
-    setSeconds(totalSeconds.toString())
-    setMinutes((totalSeconds / unitToSeconds['m']).toFixed(3).toString())
-    setHours((totalSeconds / unitToSeconds['h']).toFixed(3).toString())
-    setDays((totalSeconds / unitToSeconds['d']).toFixed(3).toString())
+  const resetValues = (): void => {
+    setSeconds('')
+    setMinutes('')
+    setHours('')
+    setDays('')
   }
 
   return (
