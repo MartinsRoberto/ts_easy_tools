@@ -8,7 +8,6 @@ const Energy = (props: Props) => {
   const [wattHora, setWattHora] = useState<string>("")
   const [gram, setGram] = useState<string>("")
   const [peLibra, setPeLibra] = useState<string>("")
-  const [comma, setComma] = useState<boolean>(false)
 
   const units: { [key: string]: number } = {
     j: 1,
@@ -24,7 +23,18 @@ const Energy = (props: Props) => {
     if (!inputRegex.test(value)) return
 
     if (value.substring(value.length - 1) == ",") {
-      setJoule(value)
+      switch (key) {
+        case 'j': setJoule(value)
+          break
+        case 'qc': setQuiloCaloria(value)
+          break
+        case 'wh': setWattHora(value)
+          break
+        case 'g': setGram(value)
+          break
+        case 'pl': setPeLibra(value)
+          break
+      }
       return
     }
 
@@ -35,11 +45,11 @@ const Energy = (props: Props) => {
 
     const energyDefault = parseFloat(value.replace(',', '.')) * units[key]
 
-    setJoule((energyDefault / units.j).toString().replace('.', ','))
-    setQuiloCaloria((energyDefault / units.qc).toString().replace('.', ','))
-    setWattHora((energyDefault / units.wh).toString().replace('.', ','))
-    setGram((energyDefault / units.g).toString().replace('.', ','))
-    setPeLibra((energyDefault / units.pl).toString().replace('.', ','))
+    setJoule((energyDefault / units['j']).toString().replace('.', ','))
+    setQuiloCaloria((energyDefault / units['qc']).toString().replace('.', ','))
+    setWattHora((energyDefault / units['wh']).toString().replace('.', ','))
+    setGram((energyDefault / units['g']).toString().replace('.', ','))
+    setPeLibra((energyDefault / units['pl']).toString().replace('.', ','))
 
   }
 

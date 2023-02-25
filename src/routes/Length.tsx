@@ -26,29 +26,53 @@ const Length = (props: Props) => {
   }
 
   const convertLength = (value: string, key: string) => {
-    const parserValue = parseInt(value)
+    const inputRegex = /^[0-9,.]*$/;
 
-    if (value.length === 0) {
-      clear()
+    if (!inputRegex.test(value)) return
+
+    if (value.substring(value.length - 1) == ",") {
+      switch (key) {
+        case 'q': setQuilometro(value)
+          break
+        case 'm': setMetro(value)
+          break
+        case 'c': setCentimetro(value)
+          break
+        case 'mm': setMilimetro(value)
+          break
+        case 'mc': setMicrometro(value)
+          break
+        case 'mi': setMilha(value)
+          break
+        case 'j': setJarda(value)
+          break
+        case 'pe': setPe(value)
+          break
+        case 'po': setPolegada(value)
+          break
+      }
       return
     }
 
-    if (isNaN(parserValue)) return
+    if (value.length == 0) {
+      resetValues()
+      return
+    }
 
-    const totalCentimetros = parserValue * units[key]
+    const energyLength = parseFloat(value.replace(',', '.')) * units[key]
 
-    setQuilometro((totalCentimetros / units['q']).toFixed(0).toString())
-    setMetro((totalCentimetros / units['m']).toFixed(0).toString())
-    setCentimetro((totalCentimetros / units['c']).toFixed(0).toString())
-    setMilimetro((totalCentimetros / units['mm']).toFixed(0).toString())
-    setMicrometro((totalCentimetros / units['mc']).toFixed(0).toString())
-    setMilha((totalCentimetros / units['mi']).toFixed(0).toString())
-    setJarda((totalCentimetros / units['j']).toFixed(0).toString())
-    setPe((totalCentimetros / units['pe']).toFixed(0).toString())
-    setPolegada((totalCentimetros / units['po']).toFixed(0).toString())
+    setQuilometro((energyLength / units['q']).toString().replace('.', ','))
+    setMetro((energyLength / units['m']).toString().replace('.', ','))
+    setCentimetro((energyLength / units['c']).toString().replace('.', ','))
+    setMilimetro((energyLength / units['mm']).toString().replace('.', ','))
+    setMicrometro((energyLength / units['mc']).toString().replace('.', ','))
+    setMilha((energyLength / units['mi']).toString().replace('.', ','))
+    setJarda((energyLength / units['j']).toString().replace('.', ','))
+    setPe((energyLength / units['pe']).toString().replace('.', ','))
+    setPolegada((energyLength / units['po']).toString().replace('.', ','))
   }
 
-  const clear = (): void => {
+  const resetValues = (): void => {
     setQuilometro('')
     setMetro('')
     setCentimetro('')
@@ -97,7 +121,7 @@ const Length = (props: Props) => {
         </label>
         <label>
           <span>Polegada</span>
-          <input type="text" value={polegada} onChange={(e) => convertLength(e.target.value, 'pe')} />
+          <input type="text" value={polegada} onChange={(e) => convertLength(e.target.value, 'po')} />
         </label>
       </form>
     </div>

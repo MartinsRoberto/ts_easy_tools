@@ -7,7 +7,7 @@ const Time = (props: Props) => {
   const [minutes, setMinutes] = useState<string>('')
   const [hours, setHours] = useState<string>('')
   const [days, setDays] = useState<string>('')
-
+  
   const unitToSeconds: { [key: string]: number } = {
     s: 1,
     m: 60,
