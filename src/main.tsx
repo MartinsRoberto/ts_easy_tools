@@ -15,35 +15,35 @@ import Energy from './routes/Energy';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/ts_easy_tools',
     element: <App />,
     children: [
       {
-        path: "/",
+        path: "/ts_easy_tools/",
         element: <Home />
       },
       {
-        path: "/numbers",
+        path: "/ts_easy_tools/numbers",
         element: <Numbers />
       },
       {
-        path: "/temperature",
+        path: "/ts_easy_tools/temperature",
         element: <Temperature />
       },
       {
-        path: "/time",
+        path: "/ts_easy_tools/time",
         element: <Time />
       },
       {
-        path: "/length",
+        path: "/ts_easy_tools/length",
         element: <Length />
       },
       {
-        path: "/velocity",
+        path: "/ts_easy_tools/velocity",
         element: <Velocity />
       },
       {
-        path: "/energy",
+        path: "/ts_easy_tools/energy",
         element: <Energy />
       }
     ]

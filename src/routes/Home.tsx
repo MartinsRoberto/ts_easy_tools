@@ -18,42 +18,42 @@ const Home = (props: Props) => {
       <div className="cards">
         <Card
           title="Numeros"
-          pathLink="/numbers"
+          pathLink="/ts_easy_tools/numbers"
           description="Converta os números para outra unidade"
           examples={["Binário", "Hexadecimal", "Octadecimal", "Decimal"]}
           icon={<TbNumbers />}
         />
         <Card
           title="Temperatura"
-          pathLink="/temperature"
+          pathLink="/ts_easy_tools/temperature"
           description="Converta as temperaturas para outra unidade"
           examples={["Celsius", "Fahrenheit", "Kelvin", "Reaumur"]}
           icon={<FaTemperatureLow />}
         />
         <Card
           title="Tempo"
-          pathLink="/time"
+          pathLink="/ts_easy_tools/time"
           description="Converta as unidades de tempo para outra unidade"
           examples={["Segundos", "Minutos", "Horas", "Dias"]}
           icon={<BiTimeFive />}
         />
         <Card
           title="Comprimento"
-          pathLink="/length"
+          pathLink="/ts_easy_tools/length"
           description="Converta as medidas para outra unidades"
           examples={["Centímetro", "Metros", "Quilômetro", "Milha"]}
           icon={<CiRuler />}
         />
         <Card
           title="Velocidade"
-          pathLink="/velocity"
+          pathLink="/ts_easy_tools/velocity"
           description="Converta as medidas para outra unidades"
           examples={["Metro/segundo", "km/hora", "Milhas/hora", "Pés/seg", "Nó"]}
           icon={<SlSpeedometer />}
         />
         <Card
           title="Energia"
-          pathLink="/energy"
+          pathLink="/ts_easy_tools/energy"
           description="Converta as medidas para outra unidades"
           examples={["Joule", "Quilocaloria", "Watt-hora", "Gram-calorie", "Pé-libra"]}
           icon={<AiOutlineThunderbolt />}
