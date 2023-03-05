@@ -1,9 +1,11 @@
 #nav-bar{
   display: flex;
-  align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
-  height: 70px;
+  grid-template-columns: 1fr;
+  margin: auto;
+  margin-top: 1em;
 }
 
 #nav-bar a{
@@ -15,4 +17,23 @@
 
 #nav-bar a:hover{
   background-color: var(--color-blue-2);
+}
+
+@media (max-width: 600px){
+  #nav-bar{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    text-align: center;
+    width: 70%;
+  } 
+}
+
+
+@media (min-width: 600px) and (max-width: 800px){
+  #nav-bar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    text-align: center;
+    width: 70%;
+  } 
 }

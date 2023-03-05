@@ -41,7 +41,7 @@ const Energy = (props: Props) => {
     if (value.length == 0) {
       resetValues()
       return
-    }
+    } 
 
     const energyDefault = parseFloat(value.replace(',', '.')) * units[key]
 

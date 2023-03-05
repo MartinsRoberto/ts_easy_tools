@@ -1,16 +1,28 @@
 #home {
   width: 90%;
   max-width: 1000px;
-  margin: auto;
+  margin: 40px auto;
   text-align: center;
-}
+} 
 
-#home h1 {
-  margin: 1em 0;
+#home h1{
+  margin-bottom: 1em;
 }
 
 #home .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
+}
+
+@media (max-width: 600px){
+  #home .cards{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 800px){
+  #home .cards{
+    grid-template-columns: 1fr 1fr;
+  }
 }
